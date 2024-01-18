@@ -1,11 +1,15 @@
-import { Container, TextComp } from '@/components';
+import { ErrorBoundary } from '@/components';
+import { AppNavigation } from '@/navigator';
 import React from 'react';
+import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 
 const App: React.FC = () => {
   return (
-    <Container>
-      <TextComp>App</TextComp>
-    </Container>
+    <ErrorBoundary>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <AppNavigation />
+      </SafeAreaProvider>
+    </ErrorBoundary>
   );
 };
 
