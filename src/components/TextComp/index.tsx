@@ -1,22 +1,33 @@
 import { Colors, FontSize, FontStyle, Fonts, FontsMap } from '@/constants';
 import { fontScale } from '@/utils';
 import React, { forwardRef, useMemo } from 'react';
-import { StyleSheet, Text, TextProps } from 'react-native';
+import { ColorValue, StyleSheet, Text, TextProps } from 'react-native';
 
 type TextCompProps = TextProps & {
-  children: React.ReactNode;
-  fontStyle?: FontStyle;
+  size?: number;
+  font?: FontStyle;
+  color?: ColorValue;
+  text?: React.ReactNode;
+  children?: React.ReactNode;
 };
 
-export const TextComp = forwardRef<Text, TextCompProps>(({ children, style, fontStyle = 'normal', ...props }, ref) => {
-  const fontFamily = useMemo(() => FontsMap[fontStyle], [fontStyle]);
+export const TextComp = forwardRef<Text, TextCompProps>(
+  ({ children, text, style, color = Colors.text, size = FontSize.DEFAUTL, font = 'normal', ...props }, ref) => {
+    const fontSize = useMemo(() => fontScale(size), [size]);
+    const fontFamily = useMemo(() => FontsMap[font], [font]);
+    const lineHeight = useMemo(() => fontScale(size, true), [size]);
 
-  return (
-    <Text ref={ref} style={[styles.main, { fontFamily }, style]} allowFontScaling={false} {...props}>
-      {children}
-    </Text>
-  );
-});
+    return (
+      <Text
+        ref={ref}
+        allowFontScaling={false}
+        style={[styles.main, { color, fontSize, fontFamily, lineHeight }, style]}
+        {...props}>
+        {children ?? text}
+      </Text>
+    );
+  },
+);
 
 const styles = StyleSheet.create({
   main: {

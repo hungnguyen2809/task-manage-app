@@ -1,4 +1,4 @@
-import { ROUTES } from '@/constants';
+import { ROUTES, screenOptions } from '@/constants';
 import HomeScreen from '@/screens/HomeScreen';
 import SettingScreen from '@/screens/SettingScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 const MainStack: React.FC = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={ROUTES.Home} component={HomeScreen} />
       <Stack.Screen name={ROUTES.Setting} component={SettingScreen} />
     </Stack.Navigator>

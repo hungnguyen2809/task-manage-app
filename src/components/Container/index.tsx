@@ -1,3 +1,4 @@
+import { Colors } from '@/constants';
 import React, { forwardRef } from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 
@@ -12,6 +13,6 @@ export const Container = forwardRef<View, ViewProps>(({ children, style, ...prop
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
   },
 });

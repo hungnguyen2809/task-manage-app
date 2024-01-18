@@ -1,6 +1,7 @@
 import { LinkingOptions } from '@react-navigation/native';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
-export const defaultOption = {
+export const screenOptions: NativeStackNavigationOptions = {
   headerShown: false,
 };
 

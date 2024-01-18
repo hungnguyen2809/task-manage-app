@@ -22,7 +22,7 @@ type AppHeaderProps = {
   barStyle?: StatusBarStyle;
 };
 
-const AppHeaderBar: React.FC<AppHeaderProps> = ({
+export const AppHeader: React.FC<AppHeaderProps> = ({
   title,
   showBack,
   iconLeft,
@@ -89,13 +89,11 @@ const AppHeaderBar: React.FC<AppHeaderProps> = ({
   );
 };
 
-export default AppHeaderBar;
-
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingBottom: scale(10),
-    backgroundColor: Colors.drakGray,
+    backgroundColor: Colors.background,
     paddingTop: DeviceUtils.hasNotch ? 0 : 10,
   },
   btnLeftContainer: {
@@ -121,7 +119,7 @@ const styles = StyleSheet.create({
   },
   titleHeader: {
     flex: 5,
-    height: 27,
+    height: scale(27),
     alignItems: 'center',
   },
   titleText: {
