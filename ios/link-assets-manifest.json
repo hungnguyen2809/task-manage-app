@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/PFBeauSansPro-Bold.ttf",
+      "sha1": "33040f00d56a8b96af3bef3b8ded93d7b2ccf7d8"
+    },
+    {
+      "path": "src/assets/fonts/PFBeauSansPro-BoldItalic.ttf",
+      "sha1": "b2ae55514e593fccdd4f6baa157f25a1473267bd"
+    },
+    {
+      "path": "src/assets/fonts/PFBeauSansPro-Italic.ttf",
+      "sha1": "dc1c896474df360980ab1e9dbf40fa40676d4f4a"
+    },
+    {
+      "path": "src/assets/fonts/PFBeauSansPro-Regular.ttf",
+      "sha1": "4f8458518b34f8b0804f0b0c6dfc10d27ae212ad"
+    },
+    {
+      "path": "src/assets/fonts/PFBeauSansPro-SemiBold.ttf",
+      "sha1": "8fbfebe6962075ec05c5c75a467ce614a15d46e9"
+    },
+    {
+      "path": "src/assets/fonts/PFBeauSansPro-SemiBoldItalic.ttf",
+      "sha1": "d08808543a25b3fb1621bf45e4c0c0e40f168a1a"
+    }
+  ]
+}
