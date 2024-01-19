@@ -17,32 +17,30 @@ const HomeScreen: React.FC = () => {
         <Box variant="main">
           <TextComp text="Hi, Jason" />
           <TextComp size={16} font="semi" text="Be production today" />
-
           <Box variant="separator" />
 
           <TouchableComp style={styles.btnSearch}>
             <TextComp color={Colors.lightGray}>Search task</TextComp>
             <SearchNormal1 size="20" color={Colors.lightGray} />
           </TouchableComp>
-
           <Box variant="separator" />
 
-          <CardProgress title="Task Progress" titleSub="25/40 task done" progress={25 / 40} dateTime="Marh 22" />
-
+          <CardProgress title="Task Progress" titleSub="25/40 task done" progress={0.63} dateTime="Marh 22" />
           <Box variant="separator" />
 
           <Box hStack gap={16}>
             <Box flex={1}>
               <CardTask
                 progress={0.7}
+                bgColor="#6c5ce7"
                 title="UX Design"
-                description="Task management mobile app"
                 dueDate="Due: 24 Mar 2024"
+                description="Task management mobile app"
               />
             </Box>
             <Box gap={16} flex={1}>
-              <CardTask title="Api Payment" progress={0.4} />
-              <CardTask title="Update work" description="Revison home page" />
+              <CardTask title="Api Payment" progress={0.4} bgColor="#4b7bec" />
+              <CardTask title="Update work" description="Revison home page" bgColor="#44bd32" />
             </Box>
           </Box>
         </Box>

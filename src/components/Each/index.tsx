@@ -5,7 +5,7 @@ type EachProps<T> = {
   render: (item: T, index: number) => React.ReactNode;
 };
 
-export const Each = <T>({ of, render }: EachProps<T>) => {
+export const Each = <T,>({ of, render }: EachProps<T>) => {
   if (!Array.isArray(of) || typeof render !== 'function') return null;
   return Children.toArray(of.map(render));
 };

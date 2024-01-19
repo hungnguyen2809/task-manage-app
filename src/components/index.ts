@@ -1,4 +1,5 @@
 export * from './AppHeader';
+export * from './Avatar';
 export * from './Box';
 export * from './ButtonComp';
 export * from './CardProgress';
