@@ -12,7 +12,7 @@ type TextCompProps = TextProps & {
 };
 
 export const TextComp = forwardRef<Text, TextCompProps>(
-  ({ children, text, style, color = Colors.text, size = FontSize.DEFAUTL, font = 'normal', ...props }, ref) => {
+  ({ children, text, style, color = Colors.text, size = FontSize.DEFAULT, font = 'normal', ...props }, ref) => {
     const fontSize = useMemo(() => fontScale(size), [size]);
     const fontFamily = useMemo(() => FontsMap[font], [font]);
     const lineHeight = useMemo(() => fontScale(size, true), [size]);
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   main: {
     color: Colors.text,
     fontFamily: Fonts.REGULAR,
-    fontSize: fontScale(FontSize.DEFAUTL),
-    lineHeight: fontScale(FontSize.DEFAUTL, true),
+    fontSize: fontScale(FontSize.DEFAULT),
+    lineHeight: fontScale(FontSize.DEFAULT, true),
   },
 });

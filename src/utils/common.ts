@@ -155,6 +155,11 @@ export const makeJoinString = (arrs: (string | null | undefined)[], separator = 
   return arrs.filter((x) => !!x).join(separator);
 };
 
+export const isEmptyString = (value: string | null | undefined) => {
+  if (!value) return true;
+  return value.trim().length === 0;
+};
+
 export const removeAccents = (str: string | undefined): string => {
   if (!str || typeof str !== 'string') return '';
 

@@ -5,7 +5,7 @@ type FontsMapType = {
 };
 
 export const FontSize = {
-  DEFAUTL: 14,
+  DEFAULT: 14,
 };
 
 export const Fonts = {
