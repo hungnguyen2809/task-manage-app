@@ -1,11 +1,38 @@
-import { AppHeader, Box, CardProgress, CardTask, Container, TextComp, TouchableComp } from '@/components';
-import { Colors } from '@/constants';
-import { scale } from '@/utils';
-import { Element4, Notification, SearchNormal1 } from 'iconsax-react-native';
+import {
+  AppHeader,
+  Box,
+  ButtonComp,
+  CardProgress,
+  CardTask,
+  Container,
+  ProgressCircle,
+  TextComp,
+  TouchableComp,
+} from '@/components';
+import { Colors, Styles } from '@/constants';
+import { fontScale, scale } from '@/utils';
+import { AddCircle, Element4, Notification, SearchNormal1 } from 'iconsax-react-native';
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+const fakeAvatar = [
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+  require('@/assets/images/avatar.jpeg'),
+];
 
 const HomeScreen: React.FC = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Container>
       <AppHeader
@@ -32,19 +59,40 @@ const HomeScreen: React.FC = () => {
             <Box flex={1}>
               <CardTask
                 progress={0.7}
+                progressSize={8}
                 bgColor="#6c5ce7"
                 title="UX Design"
                 dueDate="Due: 24 Mar 2024"
+                listUser={fakeAvatar}
                 description="Task management mobile app"
               />
             </Box>
             <Box gap={16} flex={1}>
-              <CardTask title="Api Payment" progress={0.4} bgColor="#4b7bec" />
+              <CardTask
+                title="Api Payment"
+                progress={0.4}
+                bgColor="#4b7bec"
+                progressColor="#44bd32"
+                listUser={fakeAvatar}
+              />
               <CardTask title="Update work" description="Revison home page" bgColor="#44bd32" />
             </Box>
           </Box>
+          <Box variant="separator" />
+
+          <TextComp size={18} font="semi" text="Ugrent Task" />
+          <Box variant="card" hStack gap={15} alignItems="center">
+            <ProgressCircle size={45} thickness={4} textSize={fontScale(13)} />
+            <TextComp style={Styles.flex1} text="Write api for calc salary" numberOfLines={1} />
+          </Box>
         </Box>
+
+        <Box height={scale(100)} />
       </ScrollView>
+
+      <Box style={[styles.wrapBtnAdd, { bottom: Math.max(styles.wrapBtnAdd.bottom, insets.bottom) }]}>
+        <ButtonComp title="Add new task" icon={<AddCircle size="18" color={Colors.white} />} />
+      </Box>
     </Container>
   );
 };
@@ -59,5 +107,12 @@ const styles = StyleSheet.create({
     paddingVertical: scale(12),
     paddingHorizontal: scale(18),
     backgroundColor: Colors.drakGray,
+  },
+  wrapBtnAdd: {
+    left: 0,
+    width: '100%',
+    bottom: scale(20),
+    position: 'absolute',
+    paddingHorizontal: scale(16),
   },
 });

@@ -5,12 +5,20 @@ import { ColorValue, StyleSheet } from 'react-native';
 import * as Progress from 'react-native-progress';
 
 type ProgressCircleProps = Progress.CirclePropTypes & {
-  size: number;
-  progress: number;
+  size?: number;
+  progress?: number;
+  textSize?: number;
   textColor?: ColorValue;
 };
 
-export const ProgressCircle: React.FC<ProgressCircleProps> = ({ size, progress, textColor, ...restProps }) => {
+export const ProgressCircle: React.FC<ProgressCircleProps> = ({
+  size,
+  progress,
+  textSize,
+  textColor,
+  textStyle,
+  ...restProps
+}) => {
   return (
     <Progress.Circle
       showsText
@@ -20,7 +28,12 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = ({ size, progress, 
       strokeCap="round"
       progress={progress}
       unfilledColor={Colors.semiGray}
-      textStyle={{ ...styles.textProgress, ...(textColor ? { color: textColor } : {}) }}
+      textStyle={{
+        ...styles.textProgress,
+        ...(textColor ? { color: textColor } : {}),
+        ...(textSize ? { fontSize: textSize } : {}),
+        ...textStyle,
+      }}
       {...restProps}
     />
   );

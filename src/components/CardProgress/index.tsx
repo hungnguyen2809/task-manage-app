@@ -1,4 +1,4 @@
-import { Colors } from '@/constants';
+import { Colors, Styles } from '@/constants';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Box, ProgressCircle, TagComp, TextComp } from './../';
@@ -10,14 +10,14 @@ type CardProgressProps = {
   dateTime?: string;
 };
 
-export const CardProgress: React.FC<CardProgressProps> = ({ title, titleSub, dateTime, progress = 0 }) => {
+export const CardProgress: React.FC<CardProgressProps> = ({ title, titleSub, dateTime, progress }) => {
   return (
     <Box variant="card" style={styles.container}>
       <Box vStack gap={3} alignItems="flex-start">
-        <TextComp size={17} font="semi" numberOfLines={1}>
+        <TextComp style={Styles.flex1} size={17} font="semi" numberOfLines={1}>
           {title}
         </TextComp>
-        <TextComp size={13} color={Colors.gray}>
+        <TextComp style={Styles.flex1} size={13} color={Colors.gray}>
           {titleSub}
         </TextComp>
 
