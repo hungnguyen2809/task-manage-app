@@ -9,7 +9,8 @@ import {
   TextComp,
   TouchableComp,
 } from '@/components';
-import { Colors, Styles } from '@/constants';
+import { Colors, ROUTES, Styles } from '@/constants';
+import { navigationService } from '@/navigator';
 import { fontScale, scale } from '@/utils';
 import { AddCircle, Element4, Notification, SearchNormal1 } from 'iconsax-react-native';
 import React from 'react';
@@ -33,6 +34,14 @@ const fakeAvatar = [
 const HomeScreen: React.FC = () => {
   const insets = useSafeAreaInsets();
 
+  const handleSearchTask = () => {
+    navigationService.navigate(ROUTES.SearchTask);
+  };
+
+  const handleAddTask = () => {
+    navigationService.navigate(ROUTES.AddTask);
+  };
+
   return (
     <Container>
       <AppHeader
@@ -46,7 +55,7 @@ const HomeScreen: React.FC = () => {
           <TextComp size={16} font="semi" text="Be production today" />
           <Box variant="separator" />
 
-          <TouchableComp style={styles.btnSearch}>
+          <TouchableComp onPress={handleSearchTask} style={styles.btnSearch}>
             <TextComp color={Colors.lightGray}>Search task</TextComp>
             <SearchNormal1 size="20" color={Colors.lightGray} />
           </TouchableComp>
@@ -91,7 +100,7 @@ const HomeScreen: React.FC = () => {
       </ScrollView>
 
       <Box style={[styles.wrapBtnAdd, { bottom: Math.max(styles.wrapBtnAdd.bottom, insets.bottom) }]}>
-        <ButtonComp title="Add new task" icon={<AddCircle size="18" color={Colors.white} />} />
+        <ButtonComp onPress={handleAddTask} title="Add new task" icon={<AddCircle size="18" color={Colors.white} />} />
       </Box>
     </Container>
   );

@@ -12,4 +12,6 @@ export const navLinking: LinkingOptions<any> = {
 export enum ROUTES {
   Home = 'Home',
   Setting = 'Setting',
+  AddTask = 'AddTask',
+  SearchTask = 'SearchTask',
 }
