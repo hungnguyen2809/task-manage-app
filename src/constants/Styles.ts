@@ -37,6 +37,9 @@ export const Styles = StyleSheet.create({
   mh10: {
     marginHorizontal: scale(10),
   },
+  mh16: {
+    marginHorizontal: scale(16),
+  },
   mv10: {
     marginVertical: scale(10),
   },

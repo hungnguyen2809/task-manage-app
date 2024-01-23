@@ -12,4 +12,5 @@ export * from './Separator';
 export * from './TagComp';
 export * from './TextComp';
 export * from './TextInputComp';
+export * from './TextInputField';
 export * from './TouchableComp';

@@ -61,7 +61,7 @@ const HomeScreen: React.FC = () => {
           </TouchableComp>
           <Box variant="separator" />
 
-          <CardProgress title="Task Progress" titleSub="25/40 task done" progress={0.63} dateTime="Marh 22" />
+          <CardProgress title="Task Progress" titleSub="0/40 task done" progress={0} dateTime="Marh 22" />
           <Box variant="separator" />
 
           <Box hStack gap={16}>

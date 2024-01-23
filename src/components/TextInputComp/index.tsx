@@ -1,4 +1,4 @@
-import { Colors, Fonts } from '@/constants';
+import { Colors, FontSize, Fonts } from '@/constants';
 import { DeviceUtils, fontScale, isEmptyString, scale } from '@/utils';
 import React, { ReactNode, forwardRef } from 'react';
 import {
@@ -12,13 +12,15 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { Box, TextComp } from '..';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { Box, TextComp, TouchableComp } from '..';
 import { TextError } from '../TextError';
 
 export interface TextInputCompProps extends TextInputProps {
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
   style?: ViewStyle;
+  allowClear?: boolean;
   containerStyle?: ViewStyle;
   inputStyle?: TextStyle;
   errorText?: string;
@@ -45,6 +47,7 @@ export const TextInputComp = forwardRef<TextInput, TextInputCompProps>(
       useInputAccessoryView,
       contentInputAccessoryView,
       buttonInputAccessoryView,
+      allowClear,
       normalize,
       transform,
       onChangeText,
@@ -84,9 +87,15 @@ export const TextInputComp = forwardRef<TextInput, TextInputCompProps>(
               onChangeText={handleChangeText}
               placeholderTextColor={Colors.gray}
               inputAccessoryViewID={inputAccessoryViewID}
+              clearButtonMode={allowClear ? 'while-editing' : 'never'}
               style={[styles.input, restProps.multiline ? styles.inputMultiline : {}, inputStyle]}
               {...restProps}
             />
+            {DeviceUtils.isAndroid && allowClear && _value ? (
+              <TouchableComp onPress={handleChangeText.bind(null, '')}>
+                <AntDesign name="closecircleo" size={scale(20)} color={Colors.gray} />
+              </TouchableComp>
+            ) : null}
             {iconRight ? iconRight : null}
           </View>
         </View>
@@ -135,6 +144,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.semiGray,
     paddingVertical: scale(10),
     paddingHorizontal: scale(15),
+    backgroundColor: Colors.drakGray,
   },
   inputSubContainer: {
     flexDirection: 'row',
@@ -145,10 +155,10 @@ const styles = StyleSheet.create({
     margin: 0,
     padding: 0,
     height: scale(25),
-    fontSize: fontScale(15),
-    color: Colors.textBlack,
-    textAlignVertical: 'center',
+    color: Colors.text,
     fontFamily: Fonts.REGULAR,
+    textAlignVertical: 'center',
+    fontSize: fontScale(FontSize.DEFAULT),
   },
   inputPlaceholderView: {
     position: 'absolute',
