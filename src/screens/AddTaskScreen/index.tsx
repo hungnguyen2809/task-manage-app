@@ -1,10 +1,22 @@
-import { AppHeader, Box, ButtonComp, Container, Separator, TextComp, TextInputField } from '@/components';
+import {
+  AppHeader,
+  Box,
+  ButtonComp,
+  ButtonSelect,
+  Container,
+  DatePickerComp,
+  Separator,
+  TextComp,
+  TextInputField,
+} from '@/components';
 import { Colors, Styles } from '@/constants';
+import { useToggle } from '@/hooks';
 import { TaskModel } from '@/models/TaskModel';
 import { logger } from '@/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SaveAdd } from 'iconsax-react-native';
-import React from 'react';
+import moment from 'moment';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ScrollView, View } from 'react-native';
 import * as yup from 'yup';
@@ -30,6 +42,9 @@ const schame = yup.object().shape({
 });
 
 const AddTaskScreen: React.FC = () => {
+  const [dueDate, setDueDate] = useState<Date>();
+  const [openDueDate, toggleDueDate] = useToggle();
+
   const { control, handleSubmit } = useForm<TaskForm>({
     defaultValues: initValue,
     resolver: yupResolver(schame),
@@ -59,6 +74,15 @@ const AddTaskScreen: React.FC = () => {
               placeholder="Enter description of task"
             />
           </View>
+
+          <View>
+            <TextComp size={16} font="semi" text="Due Date" />
+            <ButtonSelect
+              onPress={toggleDueDate}
+              placeholder="Select date"
+              title={dueDate ? moment(dueDate).format('DD/MM/YYYY') : ''}
+            />
+          </View>
         </Box>
       </ScrollView>
 
@@ -70,6 +94,15 @@ const AddTaskScreen: React.FC = () => {
       />
 
       <Separator safeBottom />
+
+      <DatePickerComp
+        theme="dark"
+        title="Due Date"
+        open={openDueDate}
+        onConfirm={setDueDate}
+        onCancel={toggleDueDate}
+        date={dueDate ?? new Date()}
+      />
     </Container>
   );
 };
