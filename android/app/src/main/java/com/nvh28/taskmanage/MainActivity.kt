@@ -1,4 +1,4 @@
-package com.taskmanage
+package com.nvh28.taskmanage
 
 import android.os.Bundle
 import com.facebook.react.ReactActivity
